@@ -348,6 +348,9 @@ LC_ALL=C LANGUAGE=C LANG=C chroot $DEST/output/sdcard /bin/bash -c "update-local
 chroot $DEST/output/sdcard /bin/bash -c "debconf-apt-progress -- apt-get -y install $PAKETKI"
 #chroot $DEST/output/sdcard /bin/bash -c "apt-get install $PAKETKI"
 
+# yunohost
+chroot $DEST/output/sdcard /bin/bash -c "git clone https://github.com/YunoHost/install_script /tmp/install_script && cd /tmp/install_script && ./autoinstall_yunohostv2 test"
+
 chroot $DEST/output/sdcard /bin/bash -c "debconf-apt-progress -- apt-get -y autoremove"
 # set up 'apt
 cat <<END > $DEST/output/sdcard/etc/apt/apt.conf.d/71-no-recommends
